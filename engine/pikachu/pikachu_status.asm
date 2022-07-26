@@ -1,4 +1,14 @@
 IsStarterPikachuInOurParty::
+	ld a, [wPlayerStarter]
+	cp PIKACHU
+	jr nz, .starterIsNotPikachu
+	call CheckForYellowVersion
+	jr z, .isYellow
+.starterIsNotPikachu
+	and a
+	ret
+
+.isYellow	
 	ld hl, wPartySpecies
 	ld de, wPartyMon1OTID
 	ld bc, wPartyMonOT

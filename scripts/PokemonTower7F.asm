@@ -27,10 +27,6 @@ PokemonTower7F_ScriptPointers:
 	dw PokemonTower7Script11
 
 PokemonTower7Script0:
-IF DEF(_DEBUG)
-	call DebugPressedOrHeldB
-	ret nz
-ENDC
 	CheckEvent EVENT_BEAT_POKEMONTOWER_7_TRAINER_0
 	call z, PokemonTower7Script_60d2a
 	ret
@@ -304,7 +300,7 @@ PokemonTower7Text3:
 	ld a, HS_MR_FUJIS_HOUSE_MR_FUJI
 	ld [wMissableObjectIndex], a
 	predef ShowObject
-	ld a, HS_SAFFRON_CITY_E
+	ld a, HS_SAFFRON_CITY_SILPH_GUARD
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	ld a, HS_SAFFRON_CITY_F

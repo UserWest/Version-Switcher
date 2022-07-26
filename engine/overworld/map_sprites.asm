@@ -62,8 +62,11 @@ LoadSpriteSetFromMapHeader:
 	ld bc, (wSpriteSetID - wSpriteSet)
 	xor a
 	call FillMemory
+	call CheckForYellowVersion ; don't automatically load pika if not yellow
+	jr nz, .skipPikaLoad
 	ld a, SPRITE_PIKACHU ; load Pikachu separately
 	ld [wSpriteSet], a
+.skipPikaLoad
 	ld hl, wSprite01StateData1
 	ld a, 14
 .storeVRAMSlotsLoop
@@ -305,7 +308,7 @@ GetSplitMapSpriteSetID:
 	add hl, de
 	ld a, [hl] ; a = spriteSetID
 	cp $f0 ; does the map have 2 sprite sets?
-	ret c
+	jr c, .loadSpriteSetID ; check for maps that use different sprite sets across versions
 ; Chooses the correct sprite set ID depending on the player's position within
 ; the map for maps with two sprite sets.
 	cp $f8
@@ -335,13 +338,43 @@ GetSplitMapSpriteSetID:
 	jr c, .loadSpriteSetID
 ; if in the East side or South side
 	inc hl
-.loadSpriteSetID
-	ld a, [hl]
+.loadSpriteSetID		; Vermilion Cerulean and fuchsia have different
+	ld a, [hl]			; sprite sets in r/b, we run a check
+	cp $02				; for them here
+	jr z, .cerulean
+	cp $04
+	jr z, .vermilion
+	cp $0A
+	jr z, .fuchsia
 	ret
+
+.cerulean
+	call CheckForYellowVersion
+	ld a, $02
+	jr z, .done
+	ld a, $0B
+	jr .done
+	
+.vermilion
+	call CheckForYellowVersion
+	ld a, $04
+	jr z, .done
+	ld a, $0C
+	jr .done
+	
+.fuchsia
+	call CheckForYellowVersion
+	ld a, $0A
+	jr z, .done
+	ld a, $0D
+	jr .done
+	
 ; Uses sprite set $01 for West side and $0A for East side.
 ; Route 20 is a special case because the two map sections have a more complex
 ; shape instead of the map simply being split horizontally or vertically.
 .route20
+	call CheckForYellowVersion
+	jr nz, .route20RB
 	ld hl, wXCoord
 	ld a, [hl]
 	cp $2b
@@ -350,6 +383,7 @@ GetSplitMapSpriteSetID:
 	ld a, [hl]
 	cp $3e
 	ld a, $0a
+.backAgain
 	ret nc
 	ld a, [hl]
 	cp $37
@@ -362,7 +396,18 @@ GetSplitMapSpriteSetID:
 	ld a, $0a
 	ret c
 	ld a, $01
+.done
 	ret
+.route20RB
+	ld hl, wXCoord
+	ld a, [hl]
+	cp $2b
+	ld a, $01
+	ret c
+	ld a, [hl]
+	cp $3e
+	ld a, $0d
+	jr .backAgain
 
 INCLUDE "data/maps/sprite_sets.asm"
 

@@ -1883,6 +1883,9 @@ LoadMapHeader::
 	call InitSprites
 .finishUp
 	predef LoadTilesetHeader
+	ld a, [wUniversalVariable]    ; Skip spawning pikachu if we came from a version change, keeps
+	cp VERSION_CHANGE_IN_PROGRESS ; pikachu out of the way in the event of changing versions on
+	jr z, .skip_pika_spawn	      ; an event trigger, it will spawn after taking a step anyway
 	ld a, [wd72e]
 	bit 5, a ; did a battle happen immediately before this?
 	jr nz, .skip_pika_spawn
@@ -2140,6 +2143,48 @@ InitSprites::
 	ld de, wSprite01StateData1
 ; copy sprite stuff?
 .loadSpriteLoop
+	push bc
+	call CheckForYellowVersion
+	ld b, a
+	jr z, .skipRedOrBluecheck
+	ld a, [hl]
+	cp RED_OR_BLUE
+	jr z, .spriteBelongsInVersion
+.skipRedOrBluecheck
+	ld a, [hl]
+	cp ANY_VERSION
+	jr z, .spriteBelongsInVersion
+	cp b
+	jr z, .spriteBelongsInVersion
+
+	ld a, [wNumSprites]
+	dec a
+	ld [wNumSprites], a
+
+	ld bc, 6
+	add hl, bc
+	ld a, [hli]
+
+	bit 6, a
+	jr z, .skipTrainer
+	inc hl
+	inc hl
+	jr .skipItem
+.skipTrainer
+
+	bit 7, a
+	jr z, .skipItem
+	inc hl
+.skipItem
+
+	pop bc
+	dec b
+	jr nz, .loadSpriteLoop
+	ret
+
+.spriteBelongsInVersion
+	inc hl
+	pop bc
 	ld a, [hli]
 	ld [de], a ; x#SPRITESTATEDATA1_PICTUREID
 	inc d
@@ -2176,8 +2221,15 @@ ZeroSpriteStateData::
 ; sprite 15 is used for Pikachu
 	ld hl, wSprite01StateData1
 	ld de, wSprite01StateData2
+	ld a, [wUniversalVariable]	  ; did we get here by way of DoVersionChange
+	cp VERSION_CHANGE_IN_PROGRESS ; if so, we need to clear out the pikachu sprite
+	jr z, .zeroPika
 	xor a
 	ld b, 14 * $10
+	jr .loop
+.zeroPika
+	xor a			; Clear Pika as well, solves the problem of pikachu being considered for
+	ld b, 15 * $10	; sprite collision when changing versions despite being hidden by the player
 .loop
 	ld [hli], a
 	ld [de], a
