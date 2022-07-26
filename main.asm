@@ -19,7 +19,6 @@ INCLUDE "engine/link/cable_club.asm"
 INCLUDE "engine/menus/main_menu.asm"
 INCLUDE "engine/movie/oak_speech/oak_speech.asm"
 INCLUDE "engine/overworld/special_warps.asm"
-INCLUDE "engine/debug/debug_party.asm"
 INCLUDE "engine/menus/naming_screen.asm"
 INCLUDE "engine/movie/oak_speech/oak_speech2.asm"
 INCLUDE "engine/items/subtract_paid_money.asm"
@@ -78,7 +77,7 @@ INCLUDE "engine/menus/party_menu.asm"
 INCLUDE "gfx/player.asm"
 INCLUDE "engine/menus/start_sub_menus.asm"
 INCLUDE "engine/items/tms.asm"
-
+INCLUDE "engine/version.asm"
 
 SECTION "Battle Engine 1", ROMX
 
@@ -313,25 +312,19 @@ INCLUDE "data/battle_anims/frame_blocks.asm"
 
 SECTION "BG Map Attributes (Debug)", ROMX
 
-IF DEF(_DEBUG)
-	INCLUDE "engine/gfx/bg_map_attributes.asm"
-ENDC
+; empty with the debug features removed
 
 
 SECTION "BG Map Attributes", ROMX
 
 INCLUDE "data/cgb/bg_map_attributes.asm"
-IF !DEF(_DEBUG)
-	INCLUDE "engine/gfx/bg_map_attributes.asm"
-ENDC
+INCLUDE "engine/gfx/bg_map_attributes.asm"
+
 
 
 SECTION "bank30", ROMX
 
-; This whole bank is garbage data.
-IF !DEF(_DEBUG)
-	INCBIN "garbage/bank30.bin"
-ENDC
+; was garbage data, shouldn't be missed
 
 
 SECTION "bank3A", ROMX
@@ -426,4 +419,3 @@ INCLUDE "engine/pikachu/pikachu_status.asm"
 INCLUDE "engine/pikachu/pikachu_emotions.asm"
 INCLUDE "engine/pikachu/pikachu_movement.asm"
 INCLUDE "engine/pikachu/pikachu_pic_animation.asm"
-INCLUDE "engine/debug/debug_menu.asm"

@@ -2329,12 +2329,7 @@ wPlayerJumpingYScreenCoordsIndex:: db
 
 wRivalStarter:: db
 
-IF DEF(_DEBUG)
-; this byte gets set to NUM_POKEMON by DebugStart
-wUnknownDebugByte:: db
-ELSE
 	ds 1
-ENDC
 
 wPlayerStarter:: db
 

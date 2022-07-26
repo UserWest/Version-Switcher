@@ -2268,11 +2268,7 @@ CheckForUserInterruption::
 	jr z, .input
 
 	ldh a, [hJoy5]
-IF DEF(_DEBUG)
-	and START | SELECT | A_BUTTON
-ELSE
 	and START | A_BUTTON
-ENDC
 	jr nz, .input
 
 	dec c
