@@ -379,7 +379,9 @@ wPlayerMonNumber:: db
 ; the address of the menu cursor's current location within wTileMap
 wMenuCursorLocation:: dw
 
-	ds 2
+	ds 1
+	
+wVersionCursorLocation:: db
 
 ; how many times should HandleMenuInput poll the joypad state before it returns?
 wMenuJoypadPollCount:: db
@@ -1937,7 +1939,7 @@ wOptions:: db
 
 wObtainedBadges:: flag_array NUM_BADGES
 
-	ds 1
+wCurVersion:: db
 
 ; bit 0: If 0, limit the delay to 1 frame. Note that this has no effect if
 ;        the delay has been disabled entirely through bit 1 of this variable

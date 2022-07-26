@@ -664,6 +664,15 @@ StartMenu_SaveReset::
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
 	jp HoldTextDisplayOpen
 
+StartMenu_Version::
+	xor a
+	ldh [hAutoBGTransferEnabled], a
+	call ClearScreen
+	call UpdateSprites
+	callfar DisplayVersionMenu
+	call UpdateSprites
+	jp RedisplayStartMenu
+
 StartMenu_Option::
 	xor a
 	ldh [hAutoBGTransferEnabled], a
