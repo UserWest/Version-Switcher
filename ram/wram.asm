@@ -2085,7 +2085,9 @@ wPrinterConnectionOpen:: db
 wPrinterOpcode:: db
 wd49c:: db
 
-	ds 19
+	ds 18
+	
+wUniversalVariable:: db ; Made for my own sanity
 
 ; number of signs in the current map (up to 16)
 wNumSigns:: db
