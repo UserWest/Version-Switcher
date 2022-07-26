@@ -26,9 +26,7 @@ PrintLetterDelay::
 	ldh a, [hJoyHeld]
 .checkAButton
 	bit BIT_A_BUTTON, a
-	jr z, .checkBButton
-	jr .endWait
-.checkBButton
+	jr nz, .endWait
 	bit BIT_B_BUTTON, a
 	jr z, .buttonsNotPressed
 .endWait

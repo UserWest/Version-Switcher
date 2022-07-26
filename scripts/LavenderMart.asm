@@ -10,6 +10,9 @@ LavenderMartText2:
 	text_far _LavenderMartText2
 	text_end
 
+LavenderCashierText::
+	script_mart GREAT_BALL, SUPER_POTION, REVIVE, ESCAPE_ROPE, SUPER_REPEL, ANTIDOTE, BURN_HEAL, ICE_HEAL, PARLYZ_HEAL
+
 LavenderMartText3:
 	text_asm
 	CheckEvent EVENT_RESCUED_MR_FUJI

@@ -95,7 +95,7 @@ OverworldLoopLessDelay::
 	xor a
 	ld [wd436], a ; new yellow address
 	call IsSpriteOrSignInFrontOfPlayer
-	call Func_0ffe
+	callfar IsPlayerTalkingToPikachu
 	ldh a, [hSpriteIndexOrTextID]
 	and a
 	jp z, OverworldLoop
@@ -353,8 +353,7 @@ DoBikeSpeedup::
 	and D_UP | D_LEFT | D_RIGHT
 	ret nz
 .goFaster
-	call AdvancePlayerSprite
-	ret
+	jp AdvancePlayerSprite
 
 ; check if the player has stepped onto a warp after having not collided
 CheckWarpsNoCollision::
@@ -788,8 +787,7 @@ Func_07c4::
 	ld hl, wd732
 	bit 4, [hl]
 	ret z
-	call PlayDefaultMusic
-	ret
+	jp PlayDefaultMusic
 
 LoadPlayerSpriteGraphics::
 ; Load sprite graphics based on whether the player is standing, biking, or surfing.
@@ -1226,7 +1224,6 @@ CollisionCheckOnLand::
 	ld d, a
 	ld a, [wSpritePlayerStateData1CollisionData]
 	and d ; check if a sprite is in the direction the player is trying to go
-	nop ; ??? why is this in the code
 	jr nz, .collision
 	xor a
 	ldh [hSpriteIndexOrTextID], a
@@ -1275,8 +1272,7 @@ CheckTilePassable::
 	predef GetTileAndCoordsInFrontOfPlayer ; get tile in front of player
 	ld a, [wTileInFrontOfPlayer] ; tile in front of player
 	ld c, a
-	call IsTilePassable
-	ret
+	jp IsTilePassable
 
 ; check if the player is going to jump down a small ledge
 ; and check for collisions that only occur between certain pairs of tiles
@@ -1434,8 +1430,7 @@ LoadCurrentMapView::
 	dec b
 	jr nz, .rowLoop2
 	pop af
-	call BankswitchCommon ; restore previous ROM bank
-	ret
+	jp BankswitchCommon ; restore previous ROM bank
 
 AdvancePlayerSprite::
 	ld a, [wUpdateSpritesEnabled]
@@ -1590,8 +1585,7 @@ JoypadOverworld::
 	call RunMapScript
 	call Joypad
 	call ForceBikeDown
-	call AreInputsSimulated
-	ret
+	jp AreInputsSimulated
 
 ForceBikeDown::
 	ld a, [wFlags_D733]
@@ -1698,8 +1692,7 @@ CollisionCheckOnWater::
 	ld a, [wCurMapTileset] ; tileset
 	cp SHIP_PORT ; Vermilion Dock tileset
 	jr nz, .noCollision ; keep surfing if it's not the boarding platform tile
-	jr .stopSurfing ; if it is the boarding platform tile, stop surfing
-.stopSurfing ; based game freak
+.stopSurfing
 	ld a, $3
 	ld [wPikachuSpawnState], a
 	ld hl, wPikachuOverworldStateFlags
@@ -1708,9 +1701,8 @@ CollisionCheckOnWater::
 	ld [wWalkBikeSurfState], a
 	call LoadPlayerSpriteGraphics
 	call PlayDefaultMusic
-	jr .noCollision
 
-.noCollision ; ...and they do the same mistake twice
+.noCollision
 	and a
 .done
 	ret
@@ -1799,11 +1791,6 @@ LoadPlayerSpriteGraphicsCommon::
 ; function to load data from the map header
 LoadMapHeader::
 	farcall MarkTownVisitedAndLoadMissableObjects
-	jr asm_0dbd
-
-Func_0db5:: ; XXX
-	farcall LoadMissableObjectData
-asm_0dbd:
 	ld a, [wCurMapTileset]
 	ld [wUnusedD119], a
 	ld a, [wCurMap]
@@ -1859,7 +1846,6 @@ asm_0dbd:
 	ld [wObjectDataPointerTemp], a
 	ld a, [hli]
 	ld [wObjectDataPointerTemp + 1], a
-	push hl
 	ld a, [wObjectDataPointerTemp]
 	ld l, a
 	ld a, [wObjectDataPointerTemp + 1]
@@ -1903,7 +1889,6 @@ asm_0dbd:
 	callfar SchedulePikachuSpawnForAfterText
 .skip_pika_spawn
 	callfar LoadWildData
-	pop hl ; restore hl from before going to the warp/sign/sprite data (this value was saved for seemingly no purpose)
 	ld a, [wCurMapHeight] ; map height in 4x4 tile blocks
 	add a ; double it
 	ld [wCurrentMapHeight2], a ; store map height in 2x2 tile blocks
@@ -1925,8 +1910,7 @@ asm_0dbd:
 	ld a, [hl]
 	ld [wMapMusicROMBank], a ; music 2
 	pop af
-	call BankswitchCommon
-	ret
+	jp BankswitchCommon
 
 ; function to copy map connection data from ROM to WRAM
 ; Input: hl = source, de = destination
@@ -1974,7 +1958,7 @@ LoadMapData::
 	ld a, $01
 	ld [wUpdateSpritesEnabled], a
 	call EnableLCD
-	ld b, $09
+	ld b, SET_PAL_OVERWORLD
 	call RunPaletteCommand
 	call LoadPlayerSpriteGraphics
 	ld a, [wd732]
@@ -1987,14 +1971,12 @@ LoadMapData::
 	call PlayDefaultMusicFadeOutCurrent ; music related
 .restoreRomBank
 	pop af
-	call BankswitchCommon
-	ret
+	jp BankswitchCommon
 
 LoadScreenRelatedData::
 	call LoadTileBlockMap
 	call LoadTilesetTilePatternData
-	call LoadCurrentMapView
-	ret
+	jp LoadCurrentMapView
 
 ReloadMapAfterSurfingMinigame::
 	ldh a, [hLoadedROMBank]
@@ -2023,7 +2005,6 @@ ReloadMapAfterPrinter::
 	call BankswitchCommon
 FinishReloadingMap:
 	jpfar SetMapSpecificScriptFlagsOnMapReload
-	ret ; useless
 
 ResetMapVariables::
 	ld a, $98
@@ -2136,9 +2117,6 @@ IsSpinning::
 	ret z ; no spinning
 	farjp LoadSpinnerArrowTiles ; spin while moving
 
-Func_0ffe::
-	jpfar IsPlayerTalkingToPikachu
-
 InitSprites::
 	ld a, [hli]
 	ld [wNumSprites], a ; save the number of sprites
@@ -2227,8 +2205,6 @@ LoadSprite::
 	add hl, bc
 	ldh a, [hLoadSpriteTemp1]
 	ld [hli], a ; store movement byte 2 in byte 0 of sprite entry
-	ldh a, [hLoadSpriteTemp2]
-	ld [hl], a ; this appears pointless, since the value is overwritten immediately after
 	ldh a, [hLoadSpriteTemp2]
 	ldh [hLoadSpriteTemp1], a
 	and $3f
