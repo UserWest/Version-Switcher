@@ -1,3 +1,4 @@
+CeladonGymRB_Object:
 CeladonGym_Object:
 	db $3 ; border block
 
