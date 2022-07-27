@@ -81,16 +81,6 @@ DrawHPBar::
 LoadMonData::
 	jpfar LoadMonData_
 
-OverwritewMoves::
-; Write c to [wMoves + b]. Unused.
-	ld hl, wMoves
-	ld e, b
-	ld d, 0
-	add hl, de
-	ld a, c
-	ld [hl], a
-	ret
-
 LoadFlippedFrontSpriteByMonIndex::
 	ld a, 1
 	ld [wSpriteFlipped], a
@@ -254,7 +244,7 @@ HandlePartyMenuInput::
 	jr nz, .asm_1258
 	ld a, [wCurrentMenuItem]
 	ld [wWhichPokemon], a
-	callfar IsThisPartymonStarterPikachu_Party
+	callfar IsThisPartymonStarterPikachu
 	jr nc, .asm_1258
 	call CheckPikachuFollowingPlayer
 	jr nz, .asm_128f
@@ -449,8 +439,7 @@ GetMonHeader::
 	pop de
 	pop bc
 	pop af
-	call BankswitchCommon
-	ret
+	jp BankswitchCommon
 
 ; copy party pokemon's name to wcd6d
 GetPartyMonName2::

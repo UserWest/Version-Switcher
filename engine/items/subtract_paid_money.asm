@@ -16,6 +16,7 @@ SubtractAmountPaidFromMoney_::
 	and a
 	ret
 
+; adds the amount the player sold to their money
 AddAmountSoldToMoney_::
 	ld de, wPlayerMoney + 2
 	ld hl, hMoney + 2 ; total price of items

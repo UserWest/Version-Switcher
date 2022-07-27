@@ -156,7 +156,7 @@ HoFDisplayAndRecordMonInfo:
 	call HoFDisplayMonInfo
 	ld a, [wHoFPartyMonIndex]
 	ld [wWhichPokemon], a
-	callfar IsThisPartymonStarterPikachu_Party
+	callfar IsThisPartymonStarterPikachu
 	jr nc, .asm_70336
 	ld e, $22
 	callfar PlayPikachuSoundClip

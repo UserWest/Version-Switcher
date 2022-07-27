@@ -67,7 +67,7 @@ StartMenuPokemonText:
 
 StartMenuItemText:
 	db "ITEM@"
-	
+
 StartMenuVersionText:
 	db "VERSION@"
 
