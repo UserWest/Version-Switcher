@@ -1,3 +1,4 @@
+SummerBeachHouseRB_Object:
 SummerBeachHouse_Object:
 	db $a ; border block
 

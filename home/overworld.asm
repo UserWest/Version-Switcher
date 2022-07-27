@@ -2076,7 +2076,12 @@ GetMapHeaderPointer::
 	ld a, [wCurMap]
 	ld e, a
 	ld d, $0
+	call CheckForYellowVersion
 	ld hl, MapHeaderPointers
+	jr z, .gotMapHeaderPointers
+	ld hl, MapHeaderPointersRB
+.gotMapHeaderPointers
+	homecall CheckForChangingMap
 	add hl, de
 	add hl, de
 	ld a, [hli]

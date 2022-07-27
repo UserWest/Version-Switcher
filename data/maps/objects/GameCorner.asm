@@ -1,3 +1,4 @@
+GameCornerRB_Object:
 GameCorner_Object:
 	db $f ; border block
 

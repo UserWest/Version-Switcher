@@ -1,3 +1,4 @@
+Route4RB_Object:
 Route4_Object:
 	db $2c ; border block
 

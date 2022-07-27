@@ -1,3 +1,4 @@
+OaksLabRB_Object:
 OaksLab_Object:
 	db $3 ; border block
 
