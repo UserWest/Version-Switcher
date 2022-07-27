@@ -46,7 +46,6 @@ INCLUDE "engine/events/poison.asm"
 INCLUDE "engine/overworld/tilesets.asm"
 INCLUDE "engine/overworld/daycare_exp.asm"
 INCLUDE "data/maps/hide_show_data.asm"
-INCLUDE "engine/overworld/wild_mons.asm"
 INCLUDE "engine/items/item_effects.asm"
 INCLUDE "engine/menus/draw_badges.asm"
 INCLUDE "engine/overworld/update_map.asm"
@@ -111,6 +110,8 @@ SECTION "bank7", ROMX
 
 INCLUDE "engine/movie/oak_speech/clear_save.asm"
 INCLUDE "engine/events/elevator.asm"
+INCLUDE "engine/overworld/wild_mons.asm"
+INCLUDE "gfx/trade.asm"
 
 
 SECTION "Hidden Objects 1", ROMX
@@ -165,8 +166,6 @@ INCLUDE "data/pokemon/base_stats.asm"
 INCLUDE "data/pokemon/cries.asm"
 INCLUDE "engine/battle/trainer_ai.asm"
 INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
-INCLUDE "gfx/trade.asm"
-INCLUDE "engine/pokemon/evos_moves.asm"
 
 
 SECTION "Battle Core", ROMX
@@ -207,6 +206,7 @@ INCLUDE "engine/events/hidden_objects/indigo_plateau_hq.asm"
 SECTION "Battle Engine 7", ROMX
 
 INCLUDE "engine/battle/experience.asm"
+INCLUDE "engine/pokemon/evos_moves.asm"
 
 
 SECTION "Diploma", ROMX
@@ -319,12 +319,6 @@ SECTION "BG Map Attributes", ROMX
 
 INCLUDE "data/cgb/bg_map_attributes.asm"
 INCLUDE "engine/gfx/bg_map_attributes.asm"
-
-
-
-SECTION "bank30", ROMX
-
-; was garbage data, shouldn't be missed
 
 
 SECTION "bank3A", ROMX

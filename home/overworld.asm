@@ -738,6 +738,7 @@ HandleBlackOut::
 ; Does not print the "blacked out" message.
 
 	call GBFadeOutToBlack
+	call ClearVariable ; clearing the data for the red trainer sprite check
 	ld a, $08
 	call StopMusic
 	ld hl, wd72e

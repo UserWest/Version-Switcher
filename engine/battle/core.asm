@@ -902,11 +902,14 @@ ReplaceFaintedEnemyMon:
 	ld hl, wEnemyHPBarColor
 	ld e, $30
 	call GetBattleHealthBarColor
+	call CheckForYellowVersion
+	jr nz, .dontChangePal
 	ldpal a, SHADE_BLACK, SHADE_DARK, SHADE_LIGHT, SHADE_WHITE
 	ldh [rOBP0], a
 	ldh [rOBP1], a
 	call UpdateGBCPal_OBP0
 	call UpdateGBCPal_OBP1
+.dontChangePal
 	callfar DrawEnemyPokeballs
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
@@ -2037,6 +2040,8 @@ DrawEnemyHUDAndHPBar:
 	ld hl, wEnemyHPBarColor
 
 GetBattleHealthBarColor:
+	call CheckForYellowVersion
+	ret nz
 	ld b, [hl]
 	call GetHealthBarColor
 	ld a, [hl]

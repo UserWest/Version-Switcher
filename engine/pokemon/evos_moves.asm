@@ -42,10 +42,14 @@ Evolution_PartyMonLoop: ; loop over party mons
 	ld a, c
 	and a ; is the mon's bit set?
 	jp z, Evolution_PartyMonLoop ; if not, go to the next mon
+	ld b, 0
+	call CheckForYellowVersion
+	ld hl, EvosMovesPointerTable
+	jr z, .gotPointerTable
+	ld hl, EvosMovesPointerTableRB
+.gotPointerTable
 	ld a, [wEvoOldSpecies]
 	dec a
-	ld b, 0
-	ld hl, EvosMovesPointerTable
 	add a
 	rl b
 	ld c, a
@@ -384,7 +388,11 @@ LearnMoveFromLevelUp:
 Func_3b10f:
 	ld c, $0
 .asm_3b111
+	call CheckForYellowVersion
 	ld hl, EvosMovesPointerTable
+	jr z, .gotPointerTable
+	ld hl, EvosMovesPointerTableRB
+.gotPointerTable
 	ld b, $0
 	add hl, bc
 	add hl, bc
@@ -543,7 +551,11 @@ Evolution_FlagAction:
 	predef_jump FlagActionPredef
 
 GetMonLearnset:
+	call CheckForYellowVersion
 	ld hl, EvosMovesPointerTable
+	jr z, .gotPointerTable
+	ld hl, EvosMovesPointerTableRB
+.gotPointerTable
 	ld b, 0
 	ld a, [wcf91]
 	dec a

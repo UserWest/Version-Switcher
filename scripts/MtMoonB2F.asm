@@ -75,7 +75,7 @@ MtMoonB2F_ScriptPointers:
 MtMoon3Script0:
 	CheckEitherEventSet EVENT_GOT_DOME_FOSSIL, EVENT_GOT_HELIX_FOSSIL
 	call z, MtMoon3Script_49d28
-	CheckEvent EVENT_BEAT_MT_MOON_3_TRAINER_0
+	CheckEvent EVENT_BEAT_MT_MOON_3_JESSIE_AND_JAMES
 	call z, MtMoon3Script_49e15
 	ret
 
@@ -390,7 +390,7 @@ MtMoon3Script15:
 	xor a
 	ldh [hJoyHeld], a
 	ld [wJoyIgnore], a
-	SetEvent EVENT_BEAT_MT_MOON_3_TRAINER_0
+	SetEvent EVENT_BEAT_MT_MOON_3_JESSIE_AND_JAMES
 	ResetEventReuseHL EVENT_57E
 	ld a, $0
 	call MtMoon3Script_49ce5

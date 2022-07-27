@@ -847,7 +847,11 @@ ItemUseEvoStone:
 	ret
 
 Func_d85d:
+	call CheckForYellowVersion
 	ld hl, EvosMovesPointerTable
+	jr z, .gotPointerTable
+	ld hl, EvosMovesPointerTableRB
+.gotPointerTable
 	ld a, [wLoadedMon]
 	dec a
 	ld c, a
@@ -2002,6 +2006,8 @@ INCLUDE "data/wild/good_rod.asm"
 ItemUseSuperRod:
 	call FishingInit
 	jp c, ItemUseNotTime
+	call CheckForYellowVersion
+	jr nz, .redFishing
 	callfar ReadSuperRodData
 	ld c, e
 	ld b, d
@@ -2019,6 +2025,9 @@ ItemUseSuperRod:
 	ld [wRodResponse], a
 	jr DoNotGenerateFishingEncounter
 
+.redFishing
+	call RedBlueReadSuperRodData
+	ld a, e
 RodResponse:
 	ld [wRodResponse], a
 
@@ -2076,6 +2085,8 @@ FishingInit:
 .cannotFish
 	scf ; can't fish when surfing
 	ret
+
+INCLUDE "data/wild/red_super_rod.asm"
 
 ItemUseOaksParcel:
 	jp ItemUseNotYoursToUse
