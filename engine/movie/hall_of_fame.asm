@@ -197,7 +197,11 @@ HoFMonInfoText:
 	next "TYPE2/@"
 
 HoFLoadPlayerPics:
+	call CheckForYellowVersion
+	ld de, RedRBPicFront
+	jr nz, .gotRedPic
 	ld de, RedPicFront
+.gotRedPic
 	ld a, BANK(RedPicFront)
 	call UncompressSpriteFromDE
 	ld a, $0

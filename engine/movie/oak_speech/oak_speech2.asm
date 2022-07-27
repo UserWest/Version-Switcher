@@ -1,11 +1,29 @@
 ChoosePlayerName:
 	call OakSpeechSlidePicRight
+	ld a, [wCurVersion]
+	cp RED_VERSION
+	ld de, DefaultNamesPlayerRed
+	jr z, .gotNames
+	cp BLUE_VERSION
+	ld de, DefaultNamesPlayerBlue
+	jr z, .gotNames
 	ld de, DefaultNamesPlayer
+.gotNames
 	call DisplayIntroNameTextBox
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .customName
+	push af
+	ld a, [wCurVersion]
+	cp RED_VERSION
+	ld hl, DefaultNamesPlayerListRed
+	jr z, .gotNamesList
+	cp BLUE_VERSION
+	ld hl, DefaultNamesPlayerListBlue
+	jr z, .gotNamesList
 	ld hl, DefaultNamesPlayerList
+.gotNamesList
+	pop af
 	call GetDefaultName
 	ld de, wPlayerName
 	call OakSpeechSlidePicLeft
@@ -20,7 +38,11 @@ ChoosePlayerName:
 	jr z, .customName
 	call ClearScreen
 	call Delay3
+	call CheckForYellowVersion
+	ld de, RedRBPicFront
+	jr nz, .gotRedPic
 	ld de, RedPicFront
+.gotRedPic
 	ld b, BANK(RedPicFront)
 	call IntroDisplayPicCenteredOrUpperRight
 .done
@@ -33,12 +55,30 @@ YourNameIsText:
 
 ChooseRivalName:
 	call OakSpeechSlidePicRight
+	ld a, [wCurVersion]
+	cp RED_VERSION
+	ld de, DefaultNamesRivalRed
+	jr z, .gotNames
+	cp BLUE_VERSION
+	ld de, DefaultNamesRivalBlue
+	jr z, .gotNames
 	ld de, DefaultNamesRival
+.gotNames
 	call DisplayIntroNameTextBox
 	ld a, [wCurrentMenuItem]
 	and a
 	jr z, .customName
+	push af
+	ld a, [wCurVersion]
+	cp RED_VERSION
+	ld hl, DefaultNamesRivalListRed
+	jr z, .gotNamesList
+	cp BLUE_VERSION
+	ld hl, DefaultNamesRivalListBlue
+	jr z, .gotNamesList
 	ld hl, DefaultNamesRivalList
+.gotNamesList
+	pop af
 	call GetDefaultName
 	ld de, wRivalName
 	call OakSpeechSlidePicLeft

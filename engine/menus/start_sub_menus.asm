@@ -494,7 +494,11 @@ StartMenu_TrainerInfo::
 
 ; loads tile patterns and draws everything except for gym leader faces / badges
 DrawTrainerInfo:
+	call CheckForYellowVersion
+	ld de, RedRBPicFront
+	jr nz, .gotRedPic
 	ld de, RedPicFront
+.gotRedPic
 	lb bc, BANK(RedPicFront), $01
 	predef DisplayPicCenteredOrUpperRight
 	call DisableLCD
@@ -683,6 +687,7 @@ StartMenu_Option::
 	call LoadTextBoxTilePatterns
 	call UpdateSprites
 	jp RedisplayStartMenu
+
 
 SwitchPartyMon::
 	call SwitchPartyMon_InitVarOrSwapData ; swap data
