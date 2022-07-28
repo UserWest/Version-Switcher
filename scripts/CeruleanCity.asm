@@ -134,7 +134,16 @@ CeruleanCityScript1:
 	call SaveEndBattleTextPointers
 	ld a, OPP_RIVAL1
 	ld [wCurOpponent], a
-	ld a, 3
+	ld a, [wRivalStarter]
+	cp RIVAL_STARTER_JOLTEON
+	jr z, .adjustForJolteonOrFlareon
+	cp RIVAL_STARTER_FLAREON
+	jr z, .adjustForJolteonOrFlareon
+	jr .dontAdjust
+.adjustForJolteonOrFlareon
+	ld a, RIVAL_STARTER_VAPOREON
+.dontAdjust
+	add 6
 	ld [wTrainerNo], a
 	xor a
 	ldh [hJoyHeld], a
