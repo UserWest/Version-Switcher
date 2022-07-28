@@ -153,7 +153,7 @@ SilphCo5Text4:
 	jp TextScriptEnd
 
 SilphCo5BattleText4:
-	text_far _SilphCo5BattleText4
+	text_version _SilphCo5BattleText4, _SilphCo5BattleTextRed4
 	text_end
 
 SilphCo5EndBattleText4:

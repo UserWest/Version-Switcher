@@ -169,7 +169,7 @@ Route8EndBattleText7:
 	text_end
 
 Route8AfterBattleText7:
-	text_far _Route8AfterBattleText7
+	text_version _Route8AfterBattleText7, _Route8AfterBattleTextRed7
 	text_end
 
 Route8Text8:

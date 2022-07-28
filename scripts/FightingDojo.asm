@@ -254,7 +254,7 @@ FightingDojoText6:
 	jp TextScriptEnd
 
 WantHitmonleeText:
-	text_far _WantHitmonleeText
+	text_version _WantHitmonleeText, _WantHitmonleeTextRed
 	text_end
 
 FightingDojoText7:
@@ -289,7 +289,7 @@ FightingDojoText7:
 	jp TextScriptEnd
 
 WantHitmonchanText:
-	text_far _WantHitmonchanText
+	text_version _WantHitmonchanText, _WantHitmonchanTextRed
 	text_end
 
 OtherHitmonText:

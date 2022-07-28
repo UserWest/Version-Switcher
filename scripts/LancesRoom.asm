@@ -141,7 +141,7 @@ LanceText1:
 	jp TextScriptEnd
 
 LanceBeforeBattleText:
-	text_far _LanceBeforeBattleText
+	text_version _LanceBeforeBattleText, _LanceBeforeBattleTextRed
 	text_end
 
 LanceEndBattleText:

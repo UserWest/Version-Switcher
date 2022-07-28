@@ -98,7 +98,7 @@ Route8GateText2:
 Route7GateText2:
 Route6GateText2:
 Route5GateText2:
-	text_far _SaffronGateText_1dfe7
+	text_version _SaffronGateText_1dfe7, _SaffronGateTextRed_1dfe7
 	text_end
 
 Route8GateText3:
@@ -107,7 +107,7 @@ Route6GateText3:
 Route5GateText3:
 	text_far _SaffronGateText_8aaa9
 	sound_get_key_item
-	text_far _SaffronGateText_1dff1
+	text_version _SaffronGateText_1dff1, _SaffronGateTextRed_1dff1
 	text_end
 
 SaffronGateText_1dff6:

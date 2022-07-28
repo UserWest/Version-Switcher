@@ -247,7 +247,7 @@ SaffronGymEndBattleText2:
 	text_end
 
 SaffronGymAfterBattleText2:
-	text_far _SaffronGymAfterBattleText2
+	text_version _SaffronGymAfterBattleText2, _SaffronGymAfterBattleTextRed2
 	text_end
 
 SaffronGymBattleText3:

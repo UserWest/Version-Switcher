@@ -264,7 +264,7 @@ OakAppearsText:
 	jp TextScriptEnd
 
 OakWalksUpText:
-	text_far _OakWalksUpText
+	text_version _OakWalksUpText, _OakWalksUpTextRed
 	text_end
 
 PalletTownText_19002:

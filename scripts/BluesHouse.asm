@@ -78,7 +78,7 @@ DaisyUseMapText:
 	text_end
 
 BluesHouseDaisyWalkingText:
-	text_far _BluesHouseDaisyWalkingText
+	text_version _BluesHouseDaisyWalkingText, _BluesHouseDaisyWalkingTextRed
 	text_end
 
 BluesHouseTownMapText:

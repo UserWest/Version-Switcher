@@ -326,7 +326,7 @@ Thanks2Text:
 	text_end
 
 AfterTrade2Text:
-	text_far _AfterTrade2Text
+	text_version _AfterTrade2Text, _AfterTrade2TextRed
 	text_end
 
 WannaTrade3Text:
@@ -342,7 +342,7 @@ WrongMon3Text:
 	text_end
 
 Thanks3Text:
-	text_far _Thanks3Text
+	text_version _Thanks3Text, _Thanks3TextRed
 	text_end
 
 AfterTrade3Text:

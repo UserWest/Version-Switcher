@@ -211,7 +211,7 @@ Route12EndBattleText6:
 	text_end
 
 Route12AfterBattleText6:
-	text_far _Route12AfterBattleText6
+	text_version _Route12AfterBattleText6, _Route12AfterBattleTextRed6
 	text_end
 
 Route12Text8:

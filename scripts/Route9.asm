@@ -107,15 +107,15 @@ Route9AfterBattleText1:
 	text_end
 
 Route9BattleTextAJ:
-	text_far _Route9BattleTextAJ
+	text_version _Route9BattleTextAJ, _Route9BattleTextRed2
 	text_end
 
 Route9EndBattleTextAJ:
-	text_far _Route9EndBattleTextAJ
+	text_version _Route9EndBattleTextAJ, _Route9EndBattleTextRed2
 	text_end
 
 Route9AfterBattleTextAJ:
-	text_far _Route9AfterBattleTextAJ
+	text_version _Route9AfterBattleTextAJ, _Route9AfterBattleTextRed2
 	text_end
 
 Route9BattleText3:

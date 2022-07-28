@@ -70,7 +70,7 @@ FuchsiaCityText17:
 	text_end
 
 FuchsiaCityText18:
-	text_far _FuchsiaCityText18
+	text_version _FuchsiaCityText18, _FuchsiaCityTextRed18
 	text_end
 
 FuchsiaCityText19:

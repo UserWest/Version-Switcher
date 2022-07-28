@@ -108,7 +108,7 @@ BikeShopText_1d824:
 	text_end
 
 BikeShopComeAgainText:
-	text_far _BikeShopComeAgainText
+	text_version _BikeShopComeAgainText, _BikeShopComeAgainTextRed
 	text_end
 
 BikeShopText_1d82f:

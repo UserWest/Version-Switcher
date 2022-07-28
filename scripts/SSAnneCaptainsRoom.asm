@@ -66,7 +66,7 @@ SSAnne7RubText:
 	jp TextScriptEnd
 
 ReceivingHM01Text:
-	text_far _ReceivingHM01Text
+	text_version _ReceivingHM01Text, _ReceivingHM01TextRed
 	text_end
 
 ReceivedHM01Text:
@@ -75,7 +75,7 @@ ReceivedHM01Text:
 	text_end
 
 SSAnne7Text_61932:
-	text_far _SSAnne7Text_61932
+	text_version _SSAnne7Text_61932, _SSAnne7TextRed_61932
 	text_end
 
 HM01NoRoomText:

@@ -99,7 +99,7 @@ NameRaterText_1dac7:
 	text_end
 
 NameRaterText_1dacc:
-	text_far _NameRaterText_1dacc
+	text_version _NameRaterText_1dacc, _NameRaterTextRed_1dacc
 	text_end
 
 NameRaterText_1dad1:

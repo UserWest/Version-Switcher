@@ -624,6 +624,11 @@ _TextIDErrorText::
 	text_decimal hSpriteIndexOrTextID, 1, 2
 	text " error."
 	done
+	
+_TextIDErrorTextRed::
+	text_decimal hSpriteIndexOrTextID, 1, 2
+	text " ERROR."
+	done
 
 _ContCharText::
 	text "<_CONT>@"

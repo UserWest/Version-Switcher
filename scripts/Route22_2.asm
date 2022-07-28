@@ -33,7 +33,7 @@ Func_f1b47::
 	ret
 
 Route22RivalBeforeBattleText2:
-	text_far _Route22RivalBeforeBattleText2
+	text_version _Route22RivalBeforeBattleText2, _Route22RivalBeforeBattleTextRed2
 	text_end
 
 Route22RivalAfterBattleText2:

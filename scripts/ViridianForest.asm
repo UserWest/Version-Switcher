@@ -76,7 +76,7 @@ ViridianForestTalkToTrainer:
 	jp TextScriptEnd
 
 ViridianForestBattleText1:
-	text_far _ViridianForestBattleText1
+	text_version _ViridianForestBattleText1, _ViridianForestBattleTextRed1
 	text_end
 
 ViridianForestEndBattleText1:

@@ -15,7 +15,7 @@ CopycatsHouse1FText2:
 	text_end
 
 CopycatsHouse1FText3:
-	text_far _CopycatsHouse1FText3
+	text_version _CopycatsHouse1FText3, _CopycatsHouse1FTextRed3
 	text_asm
 	ld a, CHANSEY
 	call PlayCry

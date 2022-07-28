@@ -223,7 +223,7 @@ Route17Text10:
 	jp TextScriptEnd
 
 Route17BattleText10:
-	text_far _Route17BattleText10
+	text_version _Route17BattleText10, _Route17BattleTextRed10
 	text_end
 
 Route17EndBattleText10:

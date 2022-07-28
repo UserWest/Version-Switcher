@@ -64,7 +64,7 @@ Route14EndBattleText1:
 	text_end
 
 Route14AfterBattleText1:
-	text_far _Route14AfterBattleText1
+	text_version _Route14AfterBattleText1, _Route14AfterBattleTextRed1
 	text_end
 
 Route14Text2:

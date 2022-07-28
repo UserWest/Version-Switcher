@@ -148,6 +148,13 @@ MACRO text_far
 	dab \1 ; address of text commands
 ENDM
 
+	const TX_VER ; $18
+MACRO text_version
+	db TX_VER
+	dab \1 ; address of text commands for yellow
+	dab \2 ; address of text commands for red/blue
+ENDM
+
 
 	const_next $50
 

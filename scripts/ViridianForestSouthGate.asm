@@ -11,5 +11,5 @@ ViridianForestEntranceText1:
 	text_end
 
 ViridianForestEntranceText2:
-	text_far _ViridianForestEntranceText2
+	text_version _ViridianForestEntranceText2, _ViridianForestEntranceTextRed2
 	text_end

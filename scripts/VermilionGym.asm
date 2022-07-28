@@ -146,7 +146,7 @@ LTSurgeText:
 	jp TextScriptEnd
 
 LTSurgePreBattleText:
-	text_far _LTSurgePreBattleText
+	text_version _LTSurgePreBattleText, _LTSurgePreBattleTextRed
 	text_end
 
 LTSurgePostBattleAdviceText:
@@ -154,7 +154,7 @@ LTSurgePostBattleAdviceText:
 	text_end
 
 LTSurgeThunderBadgeInfoText:
-	text_far _LTSurgeThunderBadgeInfoText
+	text_version _LTSurgeThunderBadgeInfoText, _LTSurgeThunderBadgeInfoTextRed
 	text_end
 
 ReceivedTM24Text:

@@ -174,7 +174,7 @@ Func_f1d36::
 	ret
 
 Museum1FText_5c28e:
-	text_far _Museum1FText_5c28e
+	text_version _Museum1FText_5c28e, _Museum1FTextRed_5c28e
 	text_end
 
 ReceivedOldAmberText:

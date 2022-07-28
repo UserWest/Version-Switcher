@@ -397,7 +397,7 @@ SilphCo7Text5:
 	jp TextScriptEnd
 
 SilphCo7BattleText1:
-	text_far _SilphCo7BattleText1
+	text_version _SilphCo7BattleText1, _SilphCo7BattleTextRed1
 	text_end
 
 SilphCo7EndBattleText1:
@@ -477,7 +477,7 @@ SilphCo7Text13:
 	text_end
 
 SilphCo7Text14:
-	text_far _SilphCo7Text_51ec8
+	text_version _SilphCo7Text_51ec8, _SilphCo7TextRed_51ec8
 	text_end
 
 SilphCo7Text_51ecd:

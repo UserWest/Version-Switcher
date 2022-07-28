@@ -161,7 +161,7 @@ CeladonMartRoofText_48504:
 CeladonMartRoofText_4850a:
 	text_far _CeladonMartRoofText_4850a
 	sound_get_item_1
-	text_far _CeladonMartRoofText_4850f
+	text_version _CeladonMartRoofText_4850f, _CeladonMartRoofTextRed_4850f
 	text_waitbutton
 	text_end
 

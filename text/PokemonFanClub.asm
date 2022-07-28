@@ -4,8 +4,20 @@ PikachuFanText::
 	cont "adorable tail?"
 	done
 
+PikachuFanTextRed::
+	text "Won't you admire"
+	line "my PIKACHU's"
+	cont "adorable tail?"
+	done
+
 PikachuFanBetterText::
 	text "Humph! My CLEFAIRY"
+	line "is twice as cute"
+	cont "as that one!"
+	done
+
+PikachuFanBetterTextRed::
+	text "Humph! My PIKACHU"
 	line "is twice as cute"
 	cont "as that one!"
 	done
@@ -46,6 +58,11 @@ FanClubPikachuText::
 	text "CLEFAIRY: Pippii!"
 	done
 
+FanClubPikachuTextRed::
+	text "PIKACHU: Chu!"
+	line "Pikachu!"
+	done
+
 FanClubSeelText::
 	text "SEEL: Kyuoo!"
 	done
@@ -66,6 +83,24 @@ FanClubMeetChairText::
 
 	para "Did you come to"
 	line "hear me brag"
+	cont "about my #MON?"
+	done
+
+FanClubMeetChairTextRed::
+	text "I chair the"
+	line "#MON Fan Club!"
+
+	para "I have collected"
+	line "over 100 #MON!"
+
+	para "I'm very fussy"
+	line "when it comes to"
+	cont "#MON!"
+
+	para "So..."
+
+	para "Did you come"
+	line "visit to hear"
 	cont "about my #MON?"
 	done
 
@@ -176,4 +211,15 @@ _FanClubText6::
 	text "Our CHAIRMAN is"
 	line "very vocal about"
 	cont "#MON."
+	done
+
+_LetsListenPolitelyText::
+	text "Let's all listen"
+	line "politely to other"
+	cont "trainers!"
+	done
+
+_BragRightBackText::
+	text "If someone brags,"
+	line "brag right back!"
 	done

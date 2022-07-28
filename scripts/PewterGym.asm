@@ -135,7 +135,7 @@ BrockPreBattleText:
 	text_end
 
 BrockPostBattleAdviceText:
-	text_far _BrockPostBattleAdviceText
+	text_version _BrockPostBattleAdviceText, _BrockPostBattleAdviceTextRed
 	text_end
 
 BeforeReceivedTM34Text:

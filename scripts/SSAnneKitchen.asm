@@ -60,7 +60,7 @@ SSAnne6Text_61807:
 	text_end
 
 SSAnne6Text_6180c:
-	text_far _SSAnne6Text_6180c
+	text_version _SSAnne6Text_6180c, _SSAnne6TextRed_6180c
 	text_end
 
 SSAnne6Text_61811:

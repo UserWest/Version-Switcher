@@ -42,10 +42,6 @@ CinnabarGymQuiz::
 	call CinnabarGymQuiz_AskQuestion
 	jp TextScriptEnd
 
-CinnabarGymQuizDummyIntroText:
-	text_far _CinnabarGymQuizDummyIntroText
-	text_end
-
 CinnabarGymQuizIntroText:
 	text_far _CinnabarGymQuizIntroText
 	text_end

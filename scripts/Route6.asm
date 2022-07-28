@@ -44,15 +44,15 @@ Route6Text1:
 	jp TextScriptEnd
 
 Route6BattleText1:
-	text_far _Route6BattleText1
+	text_version _Route6BattleText1, _Route6BattleTextRed1
 	text_end
 
 Route6EndBattleText1:
-	text_far _Route6EndBattleText1
+	text_version _Route6EndBattleText1, _Route6EndBattleTextRed1
 	text_end
 
 Route6AfterBattleText1:
-	text_far _Route6AfterBattleText1
+	text_version _Route6AfterBattleText1, _Route6AfterBattleTextRed1
 	text_end
 
 Route6Text2:
@@ -62,11 +62,11 @@ Route6Text2:
 	jp TextScriptEnd
 
 Route6BattleText2:
-	text_far _Route6BattleText2
+	text_version _Route6BattleText2, _Route6BattleTextRed2
 	text_end
 
 Route6EndBattleText2:
-	text_far _Route6EndBattleText2
+	text_version _Route6EndBattleText2, _Route6EndBattleTextRed2
 	text_end
 
 Route6AfterBattleText2:

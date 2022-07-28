@@ -168,5 +168,5 @@ MtMoon1AfterBattleText8:
 	text_end
 
 MtMoon1Text14:
-	text_far _MtMoon1Text14
+	text_version _MtMoon1Text14, _MtMoon1TextRed14
 	text_end

@@ -137,7 +137,7 @@ AgathaBeforeBattleText:
 	text_end
 
 AgathaEndBattleText:
-	text_far _AgathaEndBattleText
+	text_version _AgathaEndBattleText, _AgathaEndBattleTextRed
 	text_end
 
 AgathaAfterBattleText:

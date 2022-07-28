@@ -83,7 +83,7 @@ Route10Text3:
 	jp TextScriptEnd
 
 Route10BattleText3:
-	text_far _Route10BattleText3
+	text_version _Route10BattleText3, _Route10BattleTextRed3
 	text_end
 
 Route10EndBattleText3:

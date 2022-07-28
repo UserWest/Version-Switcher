@@ -30,7 +30,7 @@ Route12GateUpstairsText1:
 	jp TextScriptEnd
 
 TM39PreReceiveText:
-	text_far _TM39PreReceiveText
+	text_version _TM39PreReceiveText, _TM39PreReceiveTextRed
 	text_end
 
 ReceivedTM39Text:

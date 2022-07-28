@@ -113,7 +113,7 @@ Route3BattleText4:
 	text_end
 
 Route3EndBattleText4:
-	text_far _Route3EndBattleText4
+	text_version _Route3EndBattleText4, _Route3EndBattleTextRed4
 	text_end
 
 Route3AfterBattleText4:

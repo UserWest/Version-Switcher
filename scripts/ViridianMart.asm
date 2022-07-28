@@ -102,9 +102,9 @@ ViridianMartText5:
 	text_end
 
 ViridianMartText2:
-	text_far _ViridianMartText2
+	text_version _ViridianMartText2, _ViridianMartTextRed2
 	text_end
 
 ViridianMartText3:
-	text_far _ViridianMartText3
+	text_version _ViridianMartText3, _ViridianMartTextRed3
 	text_end

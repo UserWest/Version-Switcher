@@ -78,7 +78,7 @@ SilphCo10Text3:
 	jp TextScriptEnd
 
 SilphCo10Text_5a1d3:
-	text_far _SilphCo10Text_5a1d3
+	text_version _SilphCo10Text_5a1d3, _SilphCo10TextRed_5a1d3
 	text_end
 
 SilphCo10Text_5a1d8:

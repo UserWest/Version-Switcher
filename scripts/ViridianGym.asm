@@ -254,7 +254,7 @@ ReceivedEarthBadgeText:
 	text_end
 
 GiovanniPostBattleAdviceText:
-	text_far _GiovanniPostBattleAdviceText
+	text_version _GiovanniPostBattleAdviceText, _GiovanniPostBattleAdviceTextRed
 	text_waitbutton
 	text_end
 
@@ -415,7 +415,7 @@ ViridianGymEndBattleText8:
 	text_end
 
 ViridianGymAfterBattleText8:
-	text_far _ViridianGymAfterBattleText8
+	text_version _ViridianGymAfterBattleText8,  _ViridianGymAfterBattleTextRed8
 	text_end
 
 ViridianGymGuideText:

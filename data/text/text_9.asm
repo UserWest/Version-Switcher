@@ -388,6 +388,15 @@ _AfterTrade2Text::
 	cont "magnificent!"
 	done
 
+_AfterTrade2TextRed::
+	text "The @"
+	text_ram wInGameTradeGiveMonName
+	text " you"
+	line "traded to me"
+
+	para "went and evolved!"
+	done
+
 _WannaTrade3Text::
 	text "Hi! Do you have"
 	line "@"
@@ -416,6 +425,10 @@ _WrongMon3Text::
 
 _Thanks3Text::
 	text "Thanks, pal!"
+	done
+
+_Thanks3TextRed::
+	text "Thanks pal!"
 	done
 
 _AfterTrade3Text::

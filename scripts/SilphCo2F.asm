@@ -203,7 +203,7 @@ SilphCo2EndBattleText3:
 	text_end
 
 SilphCo2AfterBattleText3:
-	text_far _SilphCo2AfterBattleText3
+	text_version _SilphCo2AfterBattleText3, _SilphCo2AfterBattleTextRed3
 	text_end
 
 SilphCo2BattleText4:

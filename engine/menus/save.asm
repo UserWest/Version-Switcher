@@ -183,7 +183,7 @@ WouldYouLikeToSaveText:
 	text_end
 
 SavingText:
-	text_far _SavingText
+	text_version _SavingText, _SavingTextRed
 	text_end
 
 GameSavedText:

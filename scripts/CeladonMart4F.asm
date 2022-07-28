@@ -11,7 +11,7 @@ CeladonMart4ClerkText::
 	script_mart POKE_DOLL, FIRE_STONE, THUNDER_STONE, WATER_STONE, LEAF_STONE
 
 CeladonMart4Text2:
-	text_far _CeladonMart4Text2
+	text_version _CeladonMart4Text2, _CeladonMart4TextRed2
 	text_end
 
 CeladonMart4Text3:

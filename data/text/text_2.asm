@@ -17,11 +17,6 @@ _AIBattleUseItemText::
 	text "!"
 	prompt
 
-_BoxWillBeClearedText::
-	text "The BOX will be"
-	line "cleared."
-	done
-
 _TradeWentToText::
 	text_ram wStringBuffer
 	text " went"
@@ -322,25 +317,6 @@ _GameOverText::
 	text "PA: Your SAFARI"
 	line "GAME is over!"
 	done
-
-_CinnabarGymQuizDummyIntroText::
-	text "#MON Quiz!"
-
-	para "Get it right and"
-	line "the door opens to"
-	cont "the next room!"
-
-	para "Get it wrong and"
-	line "face a trainer!"
-
-	para "If you want to"
-	line "conserve your"
-	cont "#MON for the"
-	cont "GYM LEADER..."
-
-	para "Then get it right!"
-	line "Here we go!"
-	prompt
 
 _CinnabarGymQuizIntroText::
 	text "#MON Quiz!"

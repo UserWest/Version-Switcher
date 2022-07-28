@@ -119,7 +119,7 @@ Route16BattleText2:
 	text_end
 
 Route16EndBattleText2:
-	text_far _Route16EndBattleText2
+	text_version _Route16EndBattleText2, _Route16EndBattleTextRed2
 	text_end
 
 Route16AfterBattleText2:

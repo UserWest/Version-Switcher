@@ -341,7 +341,7 @@ CeruleanCityText5:
 
 CeruleanCityText11:
 CeruleanCityText6:
-	text_far _CeruleanCityText6
+	text_version _CeruleanCityText6, _CeruleanCityTextRed6
 	text_end
 
 CeruleanCityText7:
@@ -366,7 +366,7 @@ CeruleanCityText7:
 	jp TextScriptEnd
 
 CeruleanCityText_19730:
-	text_far _CeruleanCityText_19730
+	text_version _CeruleanCityText_19730, _CeruleanCityTextRed_19730
 	text_end
 
 CeruleanCityText_19735:
@@ -374,7 +374,7 @@ CeruleanCityText_19735:
 	text_end
 
 CeruleanCityText_1973a:
-	text_far _CeruleanCityText_1973a
+	text_version _CeruleanCityText_1973a, _CeruleanCityTextRed_1973a
 	text_end
 
 CeruleanCityText8:
@@ -409,7 +409,7 @@ CeruleanCityText_1976f:
 	text_end
 
 CeruleanCityText_19774:
-	text_far _CeruleanCityText_19774
+	text_version _CeruleanCityText_19774, _CeruleanCityTextRed_19774
 	text_end
 
 CeruleanCityText_19779:
@@ -417,7 +417,7 @@ CeruleanCityText_19779:
 	text_end
 
 CeruleanCityText_1977e:
-	text_far _CeruleanCityText_1977e
+	text_version _CeruleanCityText_1977e, _CeruleanCityTextRed_1977e
 	text_end
 
 CeruleanCityText9:

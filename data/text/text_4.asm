@@ -11,6 +11,10 @@ _WouldYouLikeToSaveText::
 _SavingText::
 	text "Saving..."
 	done
+	
+_SavingTextRed::
+	text "Now saving..."
+	done
 
 _GameSavedText::
 	text "<PLAYER> saved"

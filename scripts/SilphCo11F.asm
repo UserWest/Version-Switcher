@@ -559,7 +559,7 @@ SilphCo11Text2:
 	text_end
 
 SilphCo11Text3:
-	text_far _SilphCo11Text3
+	text_version _SilphCo11Text3, _SilphCo11TextRed3
 	text_end
 
 SilphCo10Text_62528:

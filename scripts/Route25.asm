@@ -180,7 +180,7 @@ Route25BattleText4:
 	text_end
 
 Route25EndBattleText4:
-	text_far _Route25EndBattleText4
+	text_version _Route25EndBattleText4, _Route25EndBattleTextRed4
 	text_end
 
 Route25AfterBattleText4:

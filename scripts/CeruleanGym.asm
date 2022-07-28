@@ -123,7 +123,7 @@ MistyText:
 	jp TextScriptEnd
 
 MistyPreBattleText:
-	text_far _MistyPreBattleText
+	text_version _MistyPreBattleText, _MistyPreBattleTextRed
 	text_end
 
 TM11ExplanationText:
@@ -131,7 +131,7 @@ TM11ExplanationText:
 	text_end
 
 MistyCascadeBadgeInfoText:
-	text_far _MistyCascadeBadgeInfoText
+	text_version _MistyCascadeBadgeInfoText, _MistyCascadeBadgeInfoTextRed
 	text_end
 
 ReceivedTM11Text:
@@ -144,7 +144,7 @@ TM11NoRoomText:
 	text_end
 
 ReceivedCascadeBadgeText:
-	text_far _ReceivedCascadeBadgeText
+	text_version _ReceivedCascadeBadgeText, _ReceivedCascadeBadgeTextRed
 	text_end
 
 CeruleanGymTrainerText1:
@@ -201,5 +201,5 @@ CeruleanGymGuidePreBattleText:
 	text_end
 
 CeruleanGymGuidePostBattleText:
-	text_far _CeruleanGymGuidePostBattleText
+	text_version _CeruleanGymGuidePostBattleText, _CeruleanGymGuidePostBattleTextRed
 	text_end

@@ -72,7 +72,7 @@ CeruleanHouse2Text_74e7c:
 	text_end
 
 CeruleanHouse2Text_74e81:
-	text_far _CeruleanHouse2Text_74e81
+	text_version _CeruleanHouse2Text_74e81, _CeruleanHouse2TextRed_74e81
 	text_end
 
 TextPointers_74e86:
@@ -86,7 +86,7 @@ TextPointers_74e86:
 	dw CeruleanHouse2Text_74eb9
 
 CeruleanHouse2Text_74e96:
-	text_far _CeruleanHouse2Text_74e96
+	text_version _CeruleanHouse2Text_74e96, _CeruleanHouse2TextRed_74e96
 	text_end
 
 CeruleanHouse2Text_74e9b:

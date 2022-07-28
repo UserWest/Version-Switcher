@@ -274,7 +274,7 @@ DayCareMonNeedsMoreTimeText:
 DayCareAllRightThenText:
 	text_far _DayCareAllRightThenText
 DayCareComeAgainText:
-	text_far _DayCareComeAgainText
+	text_version _DayCareComeAgainText, _DayCareComeAgainTextRed
 	text_end
 
 DayCareNoRoomForMonText:

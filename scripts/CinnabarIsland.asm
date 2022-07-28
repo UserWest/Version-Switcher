@@ -69,7 +69,7 @@ CinnabarIslandText1:
 	text_end
 
 CinnabarIslandText2:
-	text_far _CinnabarIslandText2
+	text_version _CinnabarIslandText2, _CinnabarIslandTextRed2
 	text_end
 
 CinnabarIslandText3:

@@ -74,7 +74,7 @@ SSAnne9Text5:
 	jp TextScriptEnd
 
 SSAnne9Text_61bf2:
-	text_far _SSAnne9Text_61bf2
+	text_version _SSAnne9Text_61bf2, _SSAnne9TextRed_61bf2
 	text_end
 
 SSAnne9Text7:

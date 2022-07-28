@@ -7,7 +7,7 @@ Func_f1b73::
 	ret
 
 MomWakeUpText:
-	text_far _MomWakeUpText
+	text_version _MomWakeUpText, _MomWakeUpTextRed
 	text_end
 
 MomHealPokemon:
@@ -32,7 +32,7 @@ MomHealPokemon:
 	ret
 
 MomHealText1:
-	text_far _MomHealText1
+	text_version _MomHealText1, _MomHealTextRed1
 	text_end
 MomHealText2:
 	text_far _MomHealText2
