@@ -20,11 +20,17 @@ PalletTown_ScriptPointers:
 	dw PalletTownScript8
 	dw PalletTownScript9
 
-PalletTownScript0:
+PalletTownScript0: ; oak stops you from leaving town
 	CheckEvent EVENT_FOLLOWED_OAK_INTO_LAB
 	ret nz
+	call CheckForYellowVersion
 	ld a, [wYCoord]
+	jr z, .yellow
+	cp 1 ; is player near north exit?
+	jr .red
+.yellow
 	cp 0 ; is player at north exit?
+.red
 	ret nz
 	ResetEvent EVENT_PLAYER_AT_RIGHT_EXIT_TO_PALLET_TOWN
 	ld a, [wXCoord]
@@ -50,7 +56,7 @@ PalletTownScript0:
 	ld [wPalletTownCurScript], a
 	ret
 
-PalletTownScript1:
+PalletTownScript1: ;show oak
 	ld a, ~(A_BUTTON | B_BUTTON)
 	ld [wJoyIgnore], a
 	xor a
@@ -60,11 +66,6 @@ PalletTownScript1:
 	call DisplayTextID
 	ld a, $FF
 	ld [wJoyIgnore], a
-	ld hl, wSprite01StateData2MapY
-	ld a, 8
-	ld [hli], a ; SPRITESTATEDATA2_MAPY
-	ld a, 14
-	ld [hl], a ; SPRITESTATEDATA2_MAPX
 	ld a, HS_PALLET_TOWN_OAK
 	ld [wMissableObjectIndex], a
 	predef ShowObject
@@ -78,9 +79,13 @@ PalletTownScript1:
 	ld [wPalletTownCurScript], a
 	ret
 
-PalletTownScript2:
+PalletTownScript2: ; oak walks to player
 	call Delay3
+	call CheckForYellowVersion
 	ld a, 0
+	jr z, .yellow
+	ld a, 1
+.yellow	
 	ld [wYCoord], a
 	ld a, 1
 	ldh [hNPCPlayerRelativePosPerspective], a
@@ -101,7 +106,7 @@ PalletTownScript2:
 	ld [wPalletTownCurScript], a
 	ret
 
-PalletTownScript3:
+PalletTownScript3: ; oak warns you and turns before battle
 	ld a, [wd730]
 	bit 0, a
 	ret nz
@@ -116,6 +121,12 @@ PalletTownScript3:
 	ld a, 1
 	ldh [hSpriteIndexOrTextID], a
 	call DisplayTextID
+	call CheckForYellowVersion
+	jr z, .yellow
+	ld a, 6
+	ld [wPalletTownCurScript], a
+	ret
+.yellow
 	; oak faces the horizontally adjacent patch of grass to face pikachu
 	ld a, $FF
 	ld [wJoyIgnore], a
@@ -151,7 +162,7 @@ PalletTownScript4:
 	ld [wPalletTownCurScript], a
 	ret
 
-PalletTownScript5:
+PalletTownScript5: ; oak looks up again
 	ld a, $2
 	ld [wcf0d], a
 	ld a, $1
@@ -172,7 +183,7 @@ PalletTownScript5:
 	ld [wPalletTownCurScript], a
 	ret
 
-PalletTownScript6:
+PalletTownScript6: ; do movement
 	xor a
 	ld [wSpritePlayerStateData1FacingDirection], a
 	ld a, $1
@@ -216,6 +227,36 @@ PalletTownScript8:
 	ret z
 	SetEvent EVENT_PALLET_AFTER_GETTING_POKEBALLS_2
 PalletTownScript9:
+	ret
+
+PalletTownRedScript3:
+	ld a, [wd730]
+	bit 0, a
+	ret nz
+	xor a ; ld a, SPRITE_FACING_DOWN
+	ld [wSpritePlayerStateData1FacingDirection], a
+	ld a, 1
+	ld [wcf0d], a
+	ld a, $FC
+	ld [wJoyIgnore], a
+	ld a, 1
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+; set up movement script that causes the player to follow Oak to his lab
+	ld a, $FF
+	ld [wJoyIgnore], a
+	ld a, 1
+	ld [wSpriteIndex], a
+	xor a
+	ld [wNPCMovementScriptFunctionNum], a
+	ld a, 1
+	ld [wNPCMovementScriptPointerTableNum], a
+	ldh a, [hLoadedROMBank]
+	ld [wNPCMovementScriptBank], a
+
+	; trigger the next script
+	ld a, 7
+	ld [wPalletTownCurScript], a
 	ret
 
 PalletTown_TextPointers:
