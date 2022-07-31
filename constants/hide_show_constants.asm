@@ -50,14 +50,14 @@ DEF SHOW EQU $15
 	const HS_DAISY_WALKING                 ; 29
 	const HS_TOWN_MAP                      ; 2A
 	const HS_OAKS_LAB_RIVAL                ; 2B
-	const HS_STARTER_BALL_1                ; 2C
-	const HS_STARTER_BALL_2                ; 
-	const HS_STARTER_BALL_3                ; 
 	const HS_EEVEE_BALL
-	const HS_OAKS_LAB_OAK_1                ; 2D EVERYTHING BELOW IS NOT ACCURATE TO ADDRESS
+	const HS_OAKS_LAB_OAK_1                ; 2D 
 	const HS_POKEDEX_1                     ; 2E
 	const HS_POKEDEX_2                     ; 2F
 	const HS_OAKS_LAB_OAK_2                ; 30
+	const HS_STARTER_BALL_1                ; 2C
+	const HS_STARTER_BALL_2                ; EVERYTHING BELOW IS NOT ACCURATE TO ADDRESS
+	const HS_STARTER_BALL_3                ; 
 	const HS_VIRIDIAN_GYM_GIOVANNI         ; 31
 	const HS_VIRIDIAN_GYM_ITEM             ; 32
 	const HS_OLD_AMBER                     ; 33

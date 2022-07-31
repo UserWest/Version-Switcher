@@ -98,7 +98,7 @@ DexRatingText_Own50To59:
 	text_end
 
 DexRatingText_Own60To69:
-	text_far _DexRatingText_Own60To69
+	text_version _DexRatingText_Own60To69, _DexRatingTextRed_Own60To69
 	text_end
 
 DexRatingText_Own70To79:
@@ -134,5 +134,5 @@ DexRatingText_Own140To149:
 	text_end
 
 DexRatingText_Own150To151:
-	text_far _DexRatingText_Own150To151
+	text_version _DexRatingText_Own150To151, _DexRatingTextRed_Own150To151
 	text_end
