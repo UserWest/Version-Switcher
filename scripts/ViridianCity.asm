@@ -19,17 +19,17 @@ ViridianCity_ScriptPointers:
 	dw ViridianCityScript10
 
 ViridianCityScript0:
-	call ViridianCityScript_1905b
+	call IsGymLocked
 	call ViridianCityScript_190ab
 	ret
 
 ViridianCityScript1:
-	call ViridianCityScript_19162
+	call ForcedCatchTutorial
 ViridianCityScript2:
-	call ViridianCityScript_1905b
+	call IsGymLocked
 	ret
 
-ViridianCityScript_1905b:
+IsGymLocked:
 	CheckEvent EVENT_VIRIDIAN_GYM_OPEN
 	ret nz
 	ld a, [wObtainedBadges]
@@ -101,7 +101,11 @@ ViridianCityScript_190db:
 	ld [wBattleType], a
 	ld a, 5
 	ld [wCurEnemyLVL], a
+	call CheckForYellowVersion
+	ld a, WEEDLE
+	jr nz, .notYellow
 	ld a, RATTATA
+.notYellow
 	ld [wCurOpponent], a
 	ret
 
@@ -164,7 +168,9 @@ ViridianCityScript_1914d:
 	ld [wJoyIgnore], a
 	ret
 
-ViridianCityScript_19162:
+ForcedCatchTutorial:
+	call CheckForYellowVersion
+	jr nz, .notYellow
 	CheckEvent EVENT_02D
 	ret nz
 	ld a, [wYCoord]
@@ -185,6 +191,17 @@ ViridianCityScript_19162:
 	call DisplayTextID
 	ld a, D_UP | D_DOWN | D_LEFT | D_RIGHT | START | SELECT
 	ld [wJoyIgnore], a
+	ret
+.notYellow
+	SetEvent EVENT_02D
+	ld a, HS_OLD_MAN
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	ld a, HS_OLD_MAN_1
+	ld [wMissableObjectIndex], a
+	predef ShowObject
+	ld a, $2
+	ld [wViridianCityCurScript], a
 	ret
 
 ViridianCityScript7:
@@ -304,7 +321,7 @@ ViridianCityText_5:
 
 ViridianCityText_6:
 	text_asm
-	farcall Func_f198e
+	farcall OldManCatchesMon
 	jp TextScriptEnd
 
 ViridianCityText_13:

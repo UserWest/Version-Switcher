@@ -4,7 +4,7 @@ Func_f18bb::
 	ret
 
 ViridianCityText_f18c2:
-	text_far _ViridianCityText1
+	text_version _ViridianCityText1, _ViridianCityTextRed1
 	text_end
 
 Func_f18c7::
@@ -123,36 +123,42 @@ TM42NoRoomText:
 	text_far _TM42NoRoomText
 	text_end
 
-Func_f198e::
-	ld hl, ViridianCityText_f19b6
+OldManCatchesMon::
+	ld hl, OldManAsks
 	call PrintText
 	ld c, 2
 	call DelayFrames
 	call YesNoChoice
 	ld a, [wCurrentMenuItem]
 	and a
+	jr nz, .refusedCheckVersion
+	call CheckForYellowVersion
 	jr nz, .refused
-	ld hl, ViridianCityText_f19bb
+.accepted
+	ld hl, OldManDoesCatch
 	call PrintText
 	ld a, $3
 	ld [wViridianCityCurScript], a
 	jr .done
+.refusedCheckVersion
+	call CheckForYellowVersion
+	jr nz, .accepted
 .refused
-	ld hl, ViridianCityText_f19c0
+	ld hl, OldManDoesntCatch
 	call PrintText
 .done
 	ret
 
-ViridianCityText_f19b6:
-	text_far _OldManAgainText1
+OldManAsks:
+	text_version _OldManAgainText1, _OldManAgainTextRed1
 	text_end
 
-ViridianCityText_f19bb:
-	text_far _OldManAgainText2
+OldManDoesCatch:
+	text_version _OldManAgainText2, _OldManAgainTextRed2
 	text_end
 
-ViridianCityText_f19c0:
-	text_far _OldManAgainText3
+OldManDoesntCatch:
+	text_version _OldManAgainText3, _OldManAgainTextRed3
 	text_end
 
 Func_f19c5::
