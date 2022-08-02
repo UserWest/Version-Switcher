@@ -25,10 +25,10 @@ Route22Script_50ed6:
 	ld a, OPP_RIVAL1
 	ld [wCurOpponent], a
 	ld a, [wRivalStarter]
-	cp RIVAL_STARTER_FLAREON ;jolteon is not yet possible
-	jr nz, .skipAdjustForFlareon
+	cp RIVAL_STARTER_SQUIRTLE ; Is the rival using eeve? (any value less than squirtle)
+	jr nc, .skipAdjustForEevee
 	ld a, RIVAL_STARTER_VAPOREON
-.skipAdjustForFlareon
+.skipAdjustForEevee
 	add 2
 	ld [wTrainerNo], a
 	ret
