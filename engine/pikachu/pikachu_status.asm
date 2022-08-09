@@ -8,19 +8,22 @@ IsStarterPikachuInOurParty::
 	and a
 	ret
 
-IsOurStarterInOurParty::
+IsOurStarterInOurParty:: ; this can't use wWhichPokemon because it will mess with other things that use it
 	ld a, -1
-	ld [wWhichPokemon], a
+	ld [wUnusedCF8D], a
 .loop
-	ld a, [wWhichPokemon]
+	ld a, [wUnusedCF8D]
 	inc a
 	cp 6
 	jr z, .noStarter
-	ld [wWhichPokemon], a
-	call IsThisPartymonOurStarter
+	ld [wUnusedCF8D], a
+	ld hl, wPartyMon1
+	ld bc, wPartyMon2 - wPartyMon1
+	ld de, wPartyMonOT
+	call StarterCheckFromParty
 	jr nc, .loop
 	
-	ld a, [wWhichPokemon]
+	ld a, [wUnusedCF8D]
 	ld hl, wPartyMon1HP
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes
@@ -46,8 +49,6 @@ IsThisBoxmonStarterPikachu::
 	
 IsThisBoxmonOurStarter::
 	ld hl, wBoxMon1
-	ld bc, wBoxMon1CatchRate - wBoxMon1
-	push bc
 	ld bc, wBoxMon2 - wBoxMon1
 	ld de, wBoxMonOT
 	jr StarterCheck
@@ -64,12 +65,11 @@ IsThisPartymonStarterPikachu::
 	
 IsThisPartymonOurStarter::
 	ld hl, wPartyMon1
-	ld bc, wPartyMon1CatchRate - wPartyMon1
-	push bc
 	ld bc, wPartyMon2 - wPartyMon1
 	ld de, wPartyMonOT
 StarterCheck:
 	ld a, [wWhichPokemon]
+StarterCheckFromParty:
 	call AddNTimes
 	call DoesMonHaveLightBall
 	jr nz, .notPlayerStarter
@@ -98,23 +98,19 @@ StarterCheck:
 	inc hl
 	jr z, .loop
 .notPlayerStarter
-	pop bc
 	and a
 	ret
 
 .isPlayerStarter
-	pop bc
 	scf
 	ret
 
-DoesMonHaveLightBall:
-;	pop bc
+DoesMonHaveLightBall: ; this isn't set up for box mons
 	push hl
 	ld bc, wPartyMon1CatchRate - wPartyMon1
 	add hl, bc
 	ld a, [hl]
 	pop hl
-;	push bc
 	cp LIGHT_BALL_GSC
 	ret
 
