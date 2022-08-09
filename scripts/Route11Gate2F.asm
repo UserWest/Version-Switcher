@@ -9,7 +9,11 @@ Route11Gate2F_TextPointers:
 
 Route11GateUpstairsText1:
 	text_asm
+	call CheckForYellowVersion
 	ld a, TRADE_FOR_GURIO
+	jr nz, .notYellow
+	ld a, TRADE_FOR_TERRY
+.notYellow
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
 Route11GateUpstairsScriptEnd:

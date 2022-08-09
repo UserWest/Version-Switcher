@@ -11,7 +11,11 @@ Route2HouseText1:
 
 Route2HouseText2:
 	text_asm
+	call CheckForYellowVersion
 	ld a, TRADE_FOR_MILES
+	jr nz, .notYellow
+	ld a, TRADE_FOR_MARCEL
+.notYellow
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
 	jp TextScriptEnd

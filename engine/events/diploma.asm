@@ -6,7 +6,13 @@ DisplayDiploma::
 	ld [wUpdateSpritesEnabled], a
 	ld hl, wd730
 	set 6, [hl]
+	call CheckForYellowVersion
+	jr nz, .notYellow
 	callfar _DisplayDiploma
+	jr .doneDiploma
+.notYellow
+	callfar DisplayDiplomaRed
+.doneDiploma
 	call WaitForTextScrollButtonPress
 	ld hl, wd730
 	res 6, [hl]

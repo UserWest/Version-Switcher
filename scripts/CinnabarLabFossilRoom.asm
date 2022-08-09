@@ -100,7 +100,11 @@ Lab4Text_75dd5:
 
 Lab4Text2:
 	text_asm
+	call CheckForYellowVersion
+	ld a, TRADE_FOR_SAILOR
+	jr nz, .notYellow
 	ld a, TRADE_FOR_STICKY
+.notYellow
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
 	jp TextScriptEnd

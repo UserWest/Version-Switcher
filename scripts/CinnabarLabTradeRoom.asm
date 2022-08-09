@@ -12,13 +12,21 @@ Lab2Text1:
 
 Lab2Text2:
 	text_asm
+	call CheckForYellowVersion
 	ld a, TRADE_FOR_BUFFY
+	jr nz, .notYellow
+	ld a, TRADE_FOR_DORIS
+.notYellow
 	ld [wWhichTrade], a
 	jr Lab2DoTrade
 
 Lab2Text3:
 	text_asm
+	call CheckForYellowVersion
 	ld a, TRADE_FOR_CEZANNE
+	jr nz, .notYellow
+	ld a, TRADE_FOR_CRINKLES
+.notYellow
 	ld [wWhichTrade], a
 Lab2DoTrade:
 	predef DoInGameTradeDialogue

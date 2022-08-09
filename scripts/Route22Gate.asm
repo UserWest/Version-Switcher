@@ -23,12 +23,14 @@ Route22GateScript0:
 	ret nc
 	xor a
 	ldh [hJoyHeld], a
+	call CheckForYellowVersion
+	jr nz, .notYellow
 	ld a, SPRITE_FACING_LEFT
 	ld [wSprite01StateData1FacingDirection], a
+.notYellow
 	ld a, $1
 	ldh [hSpriteIndexOrTextID], a
-	call DisplayTextID
-	ret
+	jp DisplayTextID
 
 Route22GateScriptCoords:
 	dbmapcoord  4,  2

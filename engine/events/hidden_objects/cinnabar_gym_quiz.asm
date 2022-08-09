@@ -43,11 +43,11 @@ CinnabarGymQuiz::
 	jp TextScriptEnd
 
 CinnabarGymQuizIntroText:
-	text_far _CinnabarGymQuizIntroText
+	text_version _CinnabarGymQuizIntroText, _CinnabarGymQuizIntroTextRed
 	text_end
 
 CinnabarGymQuizShortIntroText:
-	text_far _CinnabarGymQuizShortIntroText
+	text_version _CinnabarGymQuizShortIntroText, _CinnabarGymQuizIntroTextRed
 	text_end
 
 CinnabarQuizQuestions:

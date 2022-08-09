@@ -9,40 +9,20 @@ _DisplayDiploma:
 	call CopyVideoData
 
 	hlcoord 0, 0
-	call Func_e9bdf
-
+	call DrawTopBorder
 	hlcoord 0, 0
-	call Func_e9beb
-
+	call DrawSideBorder ; Left Side
 	hlcoord 19, 0
-	call Func_e9beb
+	call DrawSideBorder ; Right Side
 
-	ld a, $00
-	hlcoord 0, 0
+	xor a ; corner tile
+	hlcoord 0, 0 ; left side
 	ld [hl], a
-	hlcoord 19, 0
+	hlcoord 19, 0 ; right side
 	ld [hl], a
 
-	ld de, String_e9a73
-	hlcoord 5, 2
-	call PlaceString
-
-	ld de, String_e9a7d
-	hlcoord 3, 4
-	call PlaceString
-
-	ld de, wPlayerName
-	hlcoord 10, 4
-	call PlaceString
-
-	ld de, String_e9a84
-	hlcoord 2, 6
-	call PlaceString
-
-	ld de, String_e9ac8
-	hlcoord 9, 16
-	call PlaceString
-
+	call PlaceDiplomaText
+	
 	ld b, SET_PAL_GENERIC
 	call RunPaletteCommand
 	ld a, $01
@@ -51,30 +31,33 @@ _DisplayDiploma:
 	call GBPalNormal
 	ret
 
-String_e9a73:
+DiplomaText:
 	db CIRCLE_TILE_ID, "Diploma", CIRCLE_TILE_ID, "@"
 
-String_e9a7d:
+DiplomaPlayer:
 	db "Player@"
 
-String_e9a84:
+DiplomaEmptyText:
+	db "@"
+
+DiplomaCongrats:
 	db   "Congrats! This"
 	next "diploma certifies"
 	next "that you have"
 	next "completed your"
 	next "#DEX.@"
 
-String_e9ac8:
+DiplomaGameFreak:
 	db "GAME FREAK@"
 
 Func_e9ad3:
 	call ClearScreen
 	hlcoord 0, 17
-	call Func_e9bdf
+	call DrawTopBorder
 	hlcoord 0, 0
-	call Func_e9beb
+	call DrawSideBorder
 	hlcoord 19, 0
-	call Func_e9beb
+	call DrawSideBorder
 	ld a, $00
 	hlcoord 0, 17
 	ld [hl], a
@@ -144,28 +127,131 @@ TileMap_e9bc1:
 
 String_e9bd5:  db "PLAY TIME@"
 
-Func_e9bdf:
+DrawTopBorder:
 	ld c, 10
-.asm_e9be1
+.loop
 	ld [hl], $02
 	inc hl
 	ld [hl], $01
 	inc hl
 	dec c
-	jr nz, .asm_e9be1
+	jr nz, .loop
 	ret
 
-Func_e9beb:
+DrawSideBorder:
 	ld c, 9
 	ld de, SCREEN_WIDTH
-.asm_e9bed
+.loop
 	ld [hl], $04
 	add hl, de
 	ld [hl], $03
 	add hl, de
 	dec c
-	jr nz, .asm_e9bed
+	jr nz, .loop
 	ret
 
 SurfingPikachu3Graphics: INCBIN "gfx/surfing_pikachu/surfing_pikachu_3.2bpp"
 SurfingPikachu3GraphicsEnd:
+
+DisplayDiplomaRed::
+	call DisableLCD
+
+;load circle graphics
+	ld hl, CircleTile
+	ld de, vChars2 tile CIRCLE_TILE_ID
+	ld bc, $10
+	ld a, BANK(CircleTile)
+	call FarCopyData
+
+;place diploma border
+	hlcoord 0, 0
+	lb bc, 16, 18
+	predef Diploma_TextBoxBorder
+	
+	call PlaceDiplomaText
+	
+	call DrawPlayerCharacter
+; Move the player 33 pixels right and set the priority bit so he appears
+; behind the background layer.
+	ld hl, wShadowOAMSprite00XCoord
+	lb bc, $80, $28
+.adjustPlayerGfxLoop
+	ld a, [hl] ; X
+	add 33
+	ld [hli], a
+	inc hl
+	ld a, b
+	ld [hli], a ; attributes
+	inc hl
+	dec c
+	jr nz, .adjustPlayerGfxLoop
+
+	call EnableLCD
+	farcall LoadTrainerInfoTextBoxTiles
+
+	call Delay3
+	call GBPalNormal
+;make player graphics lighter
+	ld a, $90
+	ldh [rOBP0], a
+	call UpdateGBCPal_OBP0
+	ret
+
+DrawPlayerCharacter: ;directly copied from red, probably will need to be moved and farcalled for title screen
+	ld hl, PlayerCharacterTitleGraphics
+	ld de, vSprites
+	ld bc, PlayerCharacterTitleGraphicsEnd - PlayerCharacterTitleGraphics
+	ld a, BANK(PlayerCharacterTitleGraphics)
+	call FarCopyData
+	call ClearSprites
+	xor a
+	ld [wPlayerCharacterOAMTile], a
+	ld hl, wShadowOAM
+	lb de, $60, $5a
+	ld b, 7
+.loop
+	push de
+	ld c, 5
+.innerLoop
+	ld a, d
+	ld [hli], a ; Y
+	ld a, e
+	ld [hli], a ; X
+	add 8
+	ld e, a
+	ld a, [wPlayerCharacterOAMTile]
+	ld [hli], a ; tile
+	inc a
+	ld [wPlayerCharacterOAMTile], a
+	inc hl
+	dec c
+	jr nz, .innerLoop
+	pop de
+	ld a, 8
+	add d
+	ld d, a
+	dec b
+	jr nz, .loop
+	ret
+
+PlaceDiplomaText:
+	ld de, DiplomaText
+	hlcoord 5, 2
+	call PlaceString
+
+	ld de, DiplomaPlayer
+	hlcoord 3, 4
+	call PlaceString
+
+	ld de, wPlayerName
+	hlcoord 10, 4
+	call PlaceString
+
+	ld de, DiplomaCongrats
+	hlcoord 2, 6
+	call PlaceString
+
+	ld de, DiplomaGameFreak
+	hlcoord 9, 16
+	call PlaceString
+	ret

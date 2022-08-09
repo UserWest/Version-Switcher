@@ -3,6 +3,9 @@ CeladonMansion3F_Script:
 	ret
 
 CeladonMansion3_PokedexCount:
+	call CheckForYellowVersion
+	ret nz
+CeladonMansion3_DirectorPokedexCount:
 	ld hl, wPokedexOwned
 	ld b, wPokedexOwnedEnd - wPokedexOwned
 	call CountSetBits
@@ -121,13 +124,15 @@ CeladonMansion3Text_48789:
 
 DirectorText:
 	text_asm
-	call CeladonMansion3_PokedexCount
+	call CeladonMansion3_DirectorPokedexCount
 	cp NUM_POKEMON - 1 ; discount Mew
 	jr nc, .completed_dex
 	ld hl, .GameDesignerText
 	jr .done
 .completed_dex
 	ld hl, .CompletedDexText
+	call CheckForYellowVersion
+	jr nz, .done
 	call PrintText
 	call Delay3
 	xor a

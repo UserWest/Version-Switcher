@@ -97,7 +97,11 @@ WalkToLance:
 	ld a, $ff
 	ld [wJoyIgnore], a
 	ld hl, wSimulatedJoypadStatesEnd
+	call CheckForYellowVersion
+	ld de, WalkToLanceRed_RLEList
+	jr nz, .notYellow
 	ld de, WalkToLance_RLEList
+.notYellow
 	call DecodeRLEList
 	dec a
 	ld [wSimulatedJoypadStatesIndex], a
@@ -109,6 +113,13 @@ WalkToLance:
 
 WalkToLance_RLEList:
 	db D_UP, 13
+	db D_LEFT, 12
+	db D_DOWN, 7
+	db D_LEFT, 6
+	db -1 ; end
+	
+WalkToLanceRed_RLEList:
+	db D_UP, 12
 	db D_LEFT, 12
 	db D_DOWN, 7
 	db D_LEFT, 6

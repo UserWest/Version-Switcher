@@ -8,7 +8,11 @@ Route18Gate2F_TextPointers:
 
 Route18GateUpstairsText1:
 	text_asm
+	call CheckForYellowVersion
 	ld a, TRADE_FOR_SPIKE
+	jr nz, .notYellow
+	ld a, TRADE_FOR_MARC
+.notYellow
 	ld [wWhichTrade], a
 	predef DoInGameTradeDialogue
 	jp TextScriptEnd
