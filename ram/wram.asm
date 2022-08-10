@@ -2247,7 +2247,7 @@ wRocketHideoutB4FCurScript:: db
 	ds 1
 wRoute6GateCurScript:: db
 wRoute8GateCurScript:: db
-	ds 1
+wSaffronCityCurScript:: db
 wCinnabarIslandCurScript:: db
 wPokemonMansion1FCurScript:: db
 	ds 1

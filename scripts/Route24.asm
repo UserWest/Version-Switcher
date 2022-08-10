@@ -115,6 +115,10 @@ Route24Text1:
 	jr nc, .bag_full
 	SetEvent EVENT_GOT_NUGGET
 	ld hl, Route24Text_5151a
+	call CheckForYellowVersion
+	jr z, .gotNuggetText
+	ld hl, Route24TextRed_5151a
+.gotNuggetText
 	call PrintText
 	ld hl, Route24Text_51526
 	call PrintText
@@ -153,6 +157,12 @@ Route24Text_51510:
 Route24Text_5151a:
 	text_far _Route24Text_5151a
 	sound_get_key_item
+	text_promptbutton
+	text_end
+
+Route24TextRed_5151a:
+	text_far _Route24Text_5151a
+	sound_get_item_1
 	text_promptbutton
 	text_end
 

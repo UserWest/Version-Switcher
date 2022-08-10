@@ -504,12 +504,12 @@ MapHeaderPointersRB::
 	dw AgathasRoom_h
 	dw SummerBeachHouseRB_h
 	assert_table_length NUM_MAPS
-	
+
 ChangingMapHeaderPointers:
 	table_width 2, ChangingMapHeaderPointers
 	dw SaffronCity_h
 	assert_table_length 1
-	
+
 CheckForChangingMap::
 	ld a, [wCurMap]
 	cp CERULEAN_CAVE_1F
@@ -527,5 +527,7 @@ CheckForChangingMap::
 .foundCeruleanCave
 	jp ClearVariable ; wipes wUniversalVariable to allow player to spawn at last warp
 .foundSaffron
+	xor a
+	ld [wSaffronCityCurScript], a ; added so that a saffron can run a script once upon loading
 	ld de, 00
 	jr .foundMap

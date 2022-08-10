@@ -115,6 +115,11 @@ BrockText:
 	set 7, [hl]
 	ld hl, ReceivedBoulderBadgeText
 	ld de, ReceivedBoulderBadgeText
+	call CheckForYellowVersion
+	jr z, .gotBadgeText
+	ld hl, ReceivedBoulderBadgeTextRed
+	ld de, ReceivedBoulderBadgeTextRed
+.gotBadgeText
 	call SaveEndBattleTextPointers
 	ldh a, [hSpriteIndex]
 	ld [wSpriteIndex], a
@@ -155,6 +160,12 @@ TM34NoRoomText:
 ReceivedBoulderBadgeText:
 	text_far _ReceivedBoulderBadgeText
 	sound_get_item_1
+	text_far _BrockBoulerBadgeInfoText ; Text to tell that the flash technique can be used
+	text_end
+
+ReceivedBoulderBadgeTextRed:
+	text_far _ReceivedBoulderBadgeText
+	sound_level_up ; probably supposed to play SFX_GET_ITEM_1 but the wrong music bank is loaded
 	text_far _BrockBoulerBadgeInfoText ; Text to tell that the flash technique can be used
 	text_end
 

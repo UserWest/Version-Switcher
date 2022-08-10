@@ -14,6 +14,12 @@ Func_f1f77::
 	inc hl
 	or [hl]
 	jr nz, .has_positive_balance
+	call CheckForYellowVersion
+	jr z, .getYellowDiscount
+	ld hl, .NotEnoughMoneyText
+	call PrintText
+	jp .deny_entry
+.getYellowDiscount
 	call SafariZoneEntranceGetLowCostAdmissionText
 	jr c, .deny_entry
 	jr .poor_mans_discount

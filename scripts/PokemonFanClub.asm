@@ -81,6 +81,8 @@ FanClubText1:
 	text_asm
 	CheckEventHL EVENT_152
 	jr z, .asm_59aaf
+	call CheckForYellowVersion
+	jr nz, .asm_59aaf
 	ld hl, .yellowtext
 	call PrintText
 	jr .done
@@ -101,11 +103,11 @@ FanClubText1:
 	jp TextScriptEnd
 
 .normaltext
-	text_far PikachuFanText
+	text_version PikachuFanText, PikachuFanTextRed
 	text_end
 
 .bettertext
-	text_far PikachuFanBetterText
+	text_version PikachuFanBetterText, PikachuFanBetterTextRed
 	text_end
 
 .yellowtext
@@ -117,6 +119,8 @@ FanClubText2:
 	text_asm
 	CheckEventHL EVENT_152
 	jr z, .asm_59ae7
+	call CheckForYellowVersion
+	jr nz, .asm_59ae7
 	ld hl, .yellowtext
 	call PrintText
 	jr .done
@@ -151,13 +155,17 @@ FanClubText3:
 	text_asm
 	ld hl, .text
 	call PrintText
+	call CheckForYellowVersion
 	ld a, CLEFAIRY
+	jr z, .gotCry
+	ld a, PIKACHU
+.gotCry
 	call PlayCry
 	call WaitForSoundToFinish
 	jp TextScriptEnd
 
 .text
-	text_far FanClubPikachuText
+	text_version FanClubPikachuText, FanClubPikachuTextRed
 	text_end
 
 FanClubText4:
@@ -179,6 +187,8 @@ FanClubText5:
 	text_asm
 	CheckEventHL EVENT_152
 	jr z, .check_bike_voucher
+	call CheckForYellowVersion
+	jr nz, .check_bike_voucher
 	ld hl, Text_59c1f
 	call PrintText
 	call YesNoChoice
@@ -260,7 +270,7 @@ FanClubText5:
 	jr .gbpals_print_text
 
 .meetchairtext
-	text_far FanClubMeetChairText
+	text_version FanClubMeetChairText, FanClubMeetChairTextRed
 	text_end
 
 .storytext
