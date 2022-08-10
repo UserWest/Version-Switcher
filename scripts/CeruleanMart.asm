@@ -5,9 +5,13 @@ CeruleanMart_TextPointers:
 	dw CeruleanCashierText
 	dw CeruleanMartText2
 	dw CeruleanMartText3
+	dw CeruleanCashierTextRed
 
 CeruleanCashierText::
 	script_mart POKE_BALL, POTION, ESCAPE_ROPE, REPEL, ANTIDOTE, BURN_HEAL, AWAKENING, PARLYZ_HEAL
+
+CeruleanCashierTextRed::
+	script_mart POKE_BALL, POTION, REPEL, ANTIDOTE, BURN_HEAL, AWAKENING, PARLYZ_HEAL
 
 CeruleanMartText2:
 	text_far _CeruleanMartText2

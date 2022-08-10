@@ -84,9 +84,13 @@ ViridianMart_TextPointers2:
 	dw ViridianCashierText
 	dw ViridianMartText2
 	dw ViridianMartText3
+	dw ViridianCashierTextRed
 
 ViridianCashierText::
 	script_mart POKE_BALL, POTION, ANTIDOTE, PARLYZ_HEAL, BURN_HEAL
+	
+ViridianCashierTextRed::
+	script_mart POKE_BALL, ANTIDOTE, PARLYZ_HEAL, BURN_HEAL
 
 ViridianMartText1:
 	text_far _ViridianMartText1

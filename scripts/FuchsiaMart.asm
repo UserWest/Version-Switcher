@@ -6,9 +6,13 @@ FuchsiaMart_TextPointers:
 	dw FuchsiaCashierText
 	dw FuchsiaMartText2
 	dw FuchsiaMartText3
+	dw FuchsiaCashierTextRed
 
 FuchsiaCashierText::
 	script_mart ULTRA_BALL, GREAT_BALL, HYPER_POTION, REVIVE, FULL_HEAL, SUPER_REPEL
+
+FuchsiaCashierTextRed::
+	script_mart ULTRA_BALL, GREAT_BALL, SUPER_POTION, REVIVE, FULL_HEAL, SUPER_REPEL
 
 FuchsiaMartText2:
 	text_far _FuchsiaMartText2
